@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknotherm - Innovative HVAC&R solutions (Option 2)</title>
+    <meta name="description" content="Your total supplier of marine refrigeration and HVAC systems. With close to a century of experience.">
+    
+    <!-- Google Fonts for Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === CSS Custom Properties === */
+        :root {
+            /* Brand Colors based on reference image */
+            --primary: #0A3A6A;         /* Deep Navy Blue */
+            --primary-hover: #124d86;
+            --text-main: #2D3748;
+            --text-light: #4A5568;
+            --white: #FFFFFF;
+            --footer-bg: #32353A;       /* Dark Grey */
+            --topbar-bg: #FFFFFF;
+            --topbar-border: #E2E8F0;
+            --accent-red: #D22B2B;      /* Red accent for specific links if needed */
+
+            /* Typography */
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* UI Elements */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius-pill: 9999px;
+            --border-radius-soft: 8px;
+        }
+
+        /* === Reset & Base Styles === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* === Top Bar containing "Locations", "Contacts", etc. === */
+        .top-bar {
+            background-color: var(--topbar-bg);
+            border-bottom: 1px solid var(--topbar-border);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .top-bar ul {
+            display: flex;
+            gap: 28px;
+        }
+
+        .top-bar a.text-red {
+            color: var(--accent-red);
+        }
+        
+        .top-bar a:hover {
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        /* === Main Navigation === */
+        .navbar {
+            background-color: var(--white);
+            padding: 18px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Lift shadow on scroll */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 42px;
+            display: block;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: #124d86;
+            text-transform: uppercase;
+            padding-top: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-right: 20px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+        }
+
+        /* Dropdown Setup */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            background: var(--white);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 10px;
+            height: 10px;
+            background: var(--white);
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 8px 24px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .dropdown-item:hover {
+            background-color: #F7FAFC;
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-news {
+            color: var(--accent-red);
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-news:hover {
+            border-bottom-color: var(--accent-red);
+        }
+
+        /* === Buttons === */
+        /* Updated button styles slightly for a more unified block style matching H&H */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px; 
+            border-radius: var(--border-radius-soft); /* Square/Soft borders instead of pills for Option 2 */
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            cursor: pointer;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 58, 106, 0.4);
+        }
+
+        /* Circular arrow icon inside primary buttons */
+        .arrow-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            transition: var(--transition);
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Outline button specifically for the dark immersive hero section (white edge) */
+        .btn-hero-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 12px 28px; 
+            border-radius: var(--border-radius-soft);
+        }
+
+        .btn-hero-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-hero-outline .arrow-icon {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-hero-outline:hover .arrow-icon {
+            background: var(--primary); /* Keeps arrow blue */
+            color: var(--white);
+        }
+
+        /* Nav Search Bar */
+        .nav-search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-search-input {
+            width: 42px;
+            height: 42px;
+            padding: 0 14px 0 40px;
+            border: 2px solid transparent;
+            border-radius: var(--border-radius-pill);
+            background: #F0F4F8;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .nav-search-input::placeholder {
+            color: #9AA5B4;
+            font-style: italic;
+        }
+
+        .nav-search-input:focus,
+        .nav-search-input.expanded {
+            width: 240px;
+            border-color: var(--primary);
+            background: var(--white);
+            cursor: text;
+            box-shadow: 0 2px 12px rgba(10, 58, 106, 0.12);
+        }
+
+        .nav-search-icon {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .nav-search-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 280px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            display: none;
+            z-index: 2000;
+        }
+
+        .nav-search-dropdown.visible {
+            display: block;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border-bottom: 1px solid #F0F4F8;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: #F7FAFC;
+        }
+
+        .search-result-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #EBF4FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .search-result-label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .search-result-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 1px;
+        }
+
+        .search-no-results {
+            padding: 16px 18px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* === Hero Section (Heinen & Hopman Inspired) === */
+        .hero {
+            position: relative;
+            /* Almost full screen to mimic H&H immersion */
+            height: calc(100vh - 120px); 
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the content */
+            overflow: hidden;
+            background: var(--primary); /* Deep blue fallback */
+        }
+
+        .hero-video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Dark overlay over the entire video so the white text can be easily read */
+        .hero-video-overlay {
+            position: absolute;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(10, 58, 106, 0.4);
+            z-index: 2;
+        }
+
+        /* Content fully centered and layered over the video */
+        .hero-content {
+            position: relative;
+            z-index: 4; 
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-text-box {
+            animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .hero-text-box h1 {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Subtle drop shadow for legibility */
+        }
+
+        .hero-text-box h1 strong {
+            display: block;
+            font-weight: 800;
+        }
+
+        .hero-text-box p {
+            font-size: 1.25rem;
+            margin: 0 auto 48px auto;
+            max-width: 700px;
+            line-height: 1.6;
+            font-weight: 400;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* === Markets Section === */
+        .markets-section {
+            background-color: var(--white);
+            padding: 80px 0 50px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .markets-header h2 {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #000;
+            line-height: 1.2;
+            margin-bottom: 50px;
+            letter-spacing: -0.5px;
+        }
+
+        .markets-carousel {
+            position: relative;
+            width: 100%;
+            padding: 0 2%;
+        }
+
+        .markets-grid {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 30px;
+        }
+        
+        .markets-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .market-card {
+            flex: 0 0 calc((100% - 50px) / 6);
+            min-width: 220px;
+            height: 480px;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+            display: block;
+        }
+
+        @media (max-width: 1400px) {
+            .market-card { flex: 0 0 calc((100% - 40px) / 5); }
+        }
+        @media (max-width: 1100px) {
+            .market-card { flex: 0 0 calc((100% - 30px) / 4); }
+        }
+        @media (max-width: 800px) {
+            .market-card { flex: 0 0 calc((100% - 20px) / 3); }
+        }
+        @media (max-width: 550px) {
+            .market-card { flex: 0 0 calc((100% - 10px) / 2); }
+        }
+        
+        .market-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .market-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .market-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+
+        .market-card h3 {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            z-index: 2;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: left;
+            text-transform: uppercase;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: calc(50% - 35px);
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            color: #000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        .carousel-btn.prev {
+            left: 3%;
+        }
+
+        .carousel-btn.next {
+            right: 3%;
+        }
+
+        .carousel-progress {
+            width: 250px;
+            height: 4px;
+            background-color: #E2E8F0;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-progress-bar {
+            width: 40%;
+            height: 100%;
+            background-color: #3182CE;
+            position: absolute;
+            left: 30%;
+        }
+
+        /* === Sustainability Section === */
+        .sustainability-section {
+            position: relative;
+            padding: 120px 5%;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+            font-family: var(--font-body);
+        }
+
+        .sustainability-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .sustainability-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(15, 23, 34, 0) 0%, rgba(15, 23, 34, 0.4) 40%, rgba(15, 23, 34, 0.95) 75%, rgba(15, 23, 34, 1) 100%);
+            z-index: 2;
+        }
+
+        .sustainability-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .sustainability-text-box {
+            max-width: 550px;
+            color: var(--white);
+        }
+
+        .sustainability-text-box h2 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .sustainability-text-box p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            color: #E2E8F0;
+            font-weight: 400;
+        }
+
+        .btn-pill {
+            border-radius: 9999px;
+            padding: 10px 32px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .sustainability-section {
+                justify-content: center;
+                padding: 80px 5%;
+            }
+            .sustainability-overlay {
+                background: linear-gradient(to top, rgba(15, 23, 34, 1) 0%, rgba(15, 23, 34, 0.8) 50%, rgba(15, 23, 34, 0.2) 100%);
+            }
+            .sustainability-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        /* === Footer Area === */
+        .footer {
+            background-color: var(--footer-bg);
+            color: var(--white);
+            padding: 70px 5%;
+            font-family: var(--font-body);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .footer-logo-icon {
+            width: 32px;
+            height: 48px;
+            display: block;
+        }
+        
+        .footer-logo-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-desc {
+            max-width: 650px;
+            margin: 0 auto 48px auto;
+            color: #A0AEC0;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer-info-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 48px;
+            font-size: 0.95rem;
+            color: #E2E8F0;
+        }
+
+        .footer-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-info-item svg {
+            opacity: 0.8;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--white);
+        }
+
+        .social-btn:hover {
+            background-color: var(--white);
+            color: var(--footer-bg);
+            transform: translateY(-4px);
+        }
+
+        /* Basic Responsive Handling */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.8rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .top-bar ul { gap: 15px; font-size: 0.75rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero-text-box p { font-size: 1.1rem; }
+            .footer-info-grid { flex-direction: column; gap: 20px; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Optional Top Bar (Locations, Contacts, etc.) -->
+    <div class="top-bar">
+        <ul>
+            <li><a href="#" class="text-red">Locations</a></li>
+            <li><a href="#" class="text-red">Contacts</a></li>
+            <li><a href="#" class="text-red">Knowledge base</a></li>
+            <li><a href="#" class="text-red">Exhibitions</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo-container">
+            <div class="logo-icon"><img src="assets/logo.svg" alt="Teknotherm Icon"></div>
+            <div class="logo-text">TEKNOTHERM</div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#">Innovation</a></li>
+            <li class="nav-item"><a href="#">Offshore</a></li>
+            
+            <li class="nav-item"><a href="#">Marine</a></li>
+            <li class="nav-item"><a href="#">Renewables</a></li>
+            
+            <li class="nav-item"><a href="#">Service Aftersales</a></li>
+            <li class="nav-item"><a href="#">About us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <!-- News link visually distinct based on markup -->
+            <a href="#" class="nav-news text-red">News</a>
+            
+            <!-- Search Bar replacing GET IN TOUCH -->
+            <div class="nav-search-wrapper">
+                <svg class="nav-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input 
+                    type="text" 
+                    id="siteSearch" 
+                    class="nav-search-input" 
+                    placeholder="Search the page…" 
+                    autocomplete="off"
+                    aria-label="Search page content"
+                >
+                <div class="nav-search-dropdown" id="searchDropdown"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Immersive Option 2 Hero Section (Heinen & Hopman Style) -->
+    <section class="hero">
+        
+        <!-- Full-screen immersive Video Background -->
+        <div class="hero-video-wrapper">
+            <!-- Navy tint overlay to provide high contrast for the white text -->
+            <div class="hero-video-overlay"></div>
+            
+            <!-- Native Real Video Background matching Heinen Hopman aesthetic -->
+            <video class="hero-video" autoplay loop muted playsinline poster="assets/hero-poster.jpg">
+                <source src="assets/option3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- Centered, Bold Hero Content -->
+        <div class="hero-content">
+            <div class="hero-text-box">
+                <h1>
+                    Innovative 
+                    <strong>HVAC&amp;R solutions.</strong>
+                </h1>
+                <p>
+                    Your total supplier of marine refrigeration and HVAC systems. 
+                    With close to a century of experience in our field we know a 
+                    thing or two about HVAC and refrigeration.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">
+                        GET IN TOUCH
+                        <span class="arrow-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="#products" class="btn btn-hero-outline">
+                        VIEW PRODUCTS
+                        <span class="arrow-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Markets Section -->
+    <section class="markets-section" id="markets">
+        <div class="markets-header">
+            <h2>WE DESIGN, BUILD AND SERVICE<br>HVAC&R FOR</h2>
+        </div>
+        
+        <div class="markets-carousel">
+            <button class="carousel-btn prev" aria-label="Previous">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel-btn next" aria-label="Next">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            
+            <div class="markets-grid" id="marketsGrid">
+                <a href="#" class="market-card">
+                    <img src="assets/card_navy_1775818065487.png" alt="Navy & Governmental" loading="lazy">
+                    <div class="market-overlay"></div>
+                    <h3>NAVY &<br>GOVERNMENTAL</h3>
+                </a>
+                <a href="#" class="market-card">
+                    <img src="assets/card_yachting_1775818081874.png" alt="Yachting" loading="lazy">
+                    <div class="market-overlay"></div>
+                    <h3>YACHTING</h3>
+                </a>
+                <a href="#" class="market-card">
+                    <img src="assets/card_merchant_1775818100203.png" alt="Merchant" loading="lazy">
+                    <div class="market-overlay"></div>
+                    <h3>MERCHANT</h3>
+                </a>
+                <a href="#" class="market-card">
+                    <img src="assets/card_renewables_1775818114255.png" alt="Renewables" loading="lazy">
+                    <div class="market-overlay"></div>
+                    <h3>RENEWABLES</h3>
+                </a>
+                <a href="#" class="market-card">
+                    <img src="assets/card_specialized_1775818127476.png" alt="Specialized Vessels" loading="lazy">
+                    <div class="market-overlay"></div>
+                    <h3>SPECIALIZED VESSELS</h3>
+                </a>
+                <a href="#" class="market-card">
+                    <img src="assets/card_offshore_1775818144355.png" alt="Offshore" loading="lazy">
+                    <div class="market-overlay"></div>
+                    <h3>OFFSHORE</h3>
+                </a>
+            </div>
+            
+            <div class="carousel-progress">
+                <div class="carousel-progress-bar" id="carouselProgress"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section class="sustainability-section">
+        <div class="sustainability-bg" style="background-image: url('assets/sustainability_bg.png');"></div>
+        <div class="sustainability-overlay"></div>
+        
+        <div class="sustainability-content">
+            <div class="sustainability-text-box">
+                <h2>SUSTAINABILITY</h2>
+                <p>
+                    At Teknotherm, we are committed to a more sustainable world. We provide eco-friendly solutions that help clients reduce energy use and cut CO₂ emissions. In every project, we look for the most sustainable approach. This includes using greener refrigerants, recovering waste heat, and improving energy efficiency. Sustainability is at the heart of everything we do.
+                </p>
+                <a href="#" class="btn btn-hero-outline btn-pill">
+                    READ MORE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area matching the screenshot -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-icon"><img src="assets/logo.svg" alt="Teknotherm Icon"></div>
+                <div class="footer-logo-text">TEKNOTHERM</div>
+            </div>
+            
+            <p class="footer-desc">
+                Teknotherm has a history dating back to 1926 as a designer, contractor and manufacturer of high quality refrigeration systems.
+            </p>
+            
+            <div class="footer-info-grid">
+                <div class="footer-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Strandveien 12, N-1366 Lysaker, Norway
+                </div>
+                <div class="footer-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    +47 69 19 09 00
+                </div>
+                <div class="footer-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Get in touch
+                </div>
+                <div class="footer-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Sørliveien 90, N-1788 Halden, Norway
+                </div>
+            </div>
+
+            <!-- Social Media Linking -->
+            <div class="social-icons">
+                <a href="#" class="social-btn" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" class="social-btn" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" class="social-btn" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Behaviors -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Enhanced Navbar Shadow on Scroll
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 15) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth scrolling behavior for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId !== '#') {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Markets Carousel interaction
+            const grid = document.getElementById('marketsGrid');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const progressBar = document.getElementById('carouselProgress');
+
+            function updateProgress() {
+                if (!grid || !progressBar) return;
+                const scrollLeft = grid.scrollLeft;
+                const scrollWidth = grid.scrollWidth - grid.clientWidth;
+                // Avoid division by zero when scrollWidth is 0
+                const scrolledPercent = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
+                
+                // Adjusting left position of a 40% width bar. Max left is 60%.
+                const maxLeft = 100 - parseFloat(progressBar.style.width || 40);
+                const currentLeft = (scrolledPercent / 100) * maxLeft;
+                progressBar.style.left = `${currentLeft}%`;
+            }
+
+            if (grid) {
+                grid.addEventListener('scroll', updateProgress);
+                window.addEventListener('resize', updateProgress);
+                updateProgress();
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        grid.scrollBy({ left: -300, behavior: 'smooth' });
+                    });
+                }
+                
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        grid.scrollBy({ left: 300, behavior: 'smooth' });
+                    });
+                }
+            }
+        });
+
+            // =====================
+            // Page Search Functionality
+            // =====================
+            const searchInput = document.getElementById('siteSearch');
+            const searchDropdown = document.getElementById('searchDropdown');
+
+            // Define the searchable sections on the page
+            const searchIndex = [
+                { label: 'Hero – HVAC&R Solutions', sub: 'Main hero section', section: '.hero', icon: '🚢' },
+                { label: 'Markets – Navy & Governmental', sub: 'Market card', section: '.market-card:nth-child(1)', icon: '⚓' },
+                { label: 'Markets – Yachting', sub: 'Market card', section: '.market-card:nth-child(2)', icon: '⛵' },
+                { label: 'Markets – Merchant', sub: 'Market card', section: '.market-card:nth-child(3)', icon: '🚢' },
+                { label: 'Markets – Renewables', sub: 'Market card', section: '.market-card:nth-child(4)', icon: '🌊' },
+                { label: 'Markets – Specialized Vessels', sub: 'Market card', section: '.market-card:nth-child(5)', icon: '🛳️' },
+                { label: 'Markets – Offshore', sub: 'Market card', section: '.market-card:nth-child(6)', icon: '🛢️' },
+                { label: 'We Design, Build & Service HVAC&R For', sub: 'Markets section', section: '#markets', icon: '🏗️' },
+                { label: 'Sustainability', sub: 'Our commitment to the environment', section: '.sustainability-section', icon: '🌿' },
+                { label: 'Innovation', sub: 'Navigation link', section: '.hero', icon: '💡' },
+                { label: 'Offshore', sub: 'Navigation link', section: '.sustainability-section', icon: '🛢️' },
+                { label: 'Service Aftersales', sub: 'Navigation link', section: '.footer', icon: '🔧' },
+                { label: 'Contact & Locations', sub: 'Footer information', section: '.footer', icon: '📍' },
+                { label: 'About Teknotherm', sub: 'Founded in 1926 – footer', section: '.footer', icon: 'ℹ️' },
+            ];
+
+            function scrollToSection(selector) {
+                const el = document.querySelector(selector);
+                if (el) {
+                    const navHeight = document.getElementById('navbar').offsetHeight;
+                    const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            }
+
+            function renderResults(query) {
+                const q = query.trim().toLowerCase();
+                searchDropdown.innerHTML = '';
+
+                if (!q) {
+                    searchDropdown.classList.remove('visible');
+                    return;
+                }
+
+                const matches = searchIndex.filter(item =>
+                    item.label.toLowerCase().includes(q) ||
+                    item.sub.toLowerCase().includes(q)
+                );
+
+                if (matches.length === 0) {
+                    searchDropdown.innerHTML = '<div class="search-no-results">No results found</div>';
+                } else {
+                    matches.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <div class="search-result-icon">${item.icon}</div>
+                            <div>
+                                <div class="search-result-label">${item.label}</div>
+                                <div class="search-result-sub">${item.sub}</div>
+                            </div>
+                        `;
+                        div.addEventListener('click', () => {
+                            scrollToSection(item.section);
+                            searchInput.value = '';
+                            searchDropdown.classList.remove('visible');
+                            searchInput.blur();
+                        });
+                        searchDropdown.appendChild(div);
+                    });
+                }
+
+                searchDropdown.classList.add('visible');
+            }
+
+            searchInput.addEventListener('input', e => renderResults(e.target.value));
+            searchInput.addEventListener('focus', () => {
+                searchInput.classList.add('expanded');
+                if (searchInput.value.trim()) renderResults(searchInput.value);
+            });
+            searchInput.addEventListener('blur', () => {
+                setTimeout(() => {
+                    searchInput.classList.remove('expanded');
+                    searchDropdown.classList.remove('visible');
+                }, 200);
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    searchInput.blur();
+                    searchDropdown.classList.remove('visible');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
